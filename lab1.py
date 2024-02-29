@@ -19,6 +19,18 @@ with requests.get(url) as response:
     #html = response.text
     #more(html)
 
-    print(f"\n The website headers of {url} are: \n , {response.headers} \n\n")
+    print(f"\n The website headers of {url} are: \n\n , {response.headers} \n")
 
-    
+    server = response.headers.get('Server')
+
+    if server:
+        print(f"The server is {server} \n")
+    else:
+        print("No server found \n")
+
+    cookies = response.headers.get('Set-Cookie')
+
+    if cookies:
+        print(f"The cookies are {cookies}")
+    else:
+        print("No cookies found")
